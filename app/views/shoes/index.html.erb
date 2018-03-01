@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center display-2 my-5">All Products</h1>
+      <h4>Hello <%= @user.first_name %></h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Seller</th>
+            <th>Date Posted</th>
+            <th>Amount</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @shoes.each do |shoe| %>
+          <tr>
+            <th scope="row"><%= shoe.product %></th>
+            <td><%= shoe.user.first_name %> <%= shoe.user.last_name %></td>
+            <td><%= shoe.date.strftime("%B/%d/%Y") %></td>
+            <td>$<%= shoe.amount %></td>
+            <td><a href="purchase/<%= shoe.id %>/<%= shoe.user.id %>"><button class="btn btn-info">Buy</button></a></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <a href="/dashboard/<%= @user.id %>"><button class="btn btn-info btn-block">Your Dashboard</button></a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <a href=""><button class="btn btn-primary">Dashboard</button></a>
+    <div class="col">
+      <h1 class="text-center display-2 my-5">All Products</h1>
+      <h4>Hello <%= @user.first_name %></h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><%= @user.id %></th>
+            <td><%= @user.first_name %></td>
+            <td><%= @user.last_name %></td>
+            <td><%= @user.created_at %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

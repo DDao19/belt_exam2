@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center display-2 my-5">Hello <%= @user.first_name %></h1>
+      <p>Sell Product</p>
+      <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+          <p><%= erorr %></p>
+        <% end %>
+      <% end %>
+      <form action="/shoes" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <div class="form-group">
+          <label for="">Name:</label>
+          <input type="text" name="product" class="form-control col-4">
+        </div>
+        <div class="form-group">
+          <label for="">Amount:</label>
+          <input type="number" min="1" step="any" name="amount" class="form-control col-4">
+          <button class="btn btn-primary my-5">Sell</button>
+        </div>
+      </form>
+
+      <p>Your products that are not yet sold:</p>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Date Posted</th>
+            <th>Amount</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @shoes.each do |shoe| %>
+          <tr>
+            <th scope="row"><%= shoe.product %></th>
+            <td><%= shoe.date.strftime("%B/%d/%Y") %></td>
+            <td>$<%= shoe.amount %></td>
+            <td><a href="/shoes/<%= shoe.id %>" data-method="delete">remove</a></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <p>Sales:</p>
+      <table class="table table-bordered mb-5">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Date Bought</th>
+            <th>Buyer</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 style="float:right;">Total:</h3>
+
+      <p>Purchases:</p>
+      <table class="table table-bordered mb-5">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Date Bought</th>
+            <th>Seller</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 style="float:right;">Total:</h3>
+      <a href="/shoes"><button class="btn btn-primary btn-block my-5">Go to all Products</button></a>
+    </div>
+  </div>
+</div>
